@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head include head.html -->
+{% include "inc/head.html" %}
+
+<body>
+
+<!-- Navigation navbar.html -->
+{% include "inc/navbar.html" %}
+
+
+
+<!-- Page Contentimiz burası-->
+{% block content %}
+
+
+{% endblock content %}
+
+<!-- Footer footer.html -->
+{% include "inc/footer.html" %}
+
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>
