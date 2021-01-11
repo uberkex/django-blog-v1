@@ -1,0 +1,42 @@
+@font-face {
+    src:url(/linux-biolinum-g-regular.ttf);
+    font-family: linux-biolinum;
+}
+
+
+p {
+    font-family: 'Baloo Tamma 2', cursive;
+}
+
+h5 {
+    font-family: 'Baloo Chettan 2', cursive;
+}
+
+.myfont {
+    font-family: 'Squada One', cursive;
+}
+
+.footer-font {
+    font-family: linux-biolinum;
+}
+
+.title-font {
+    font-family: 'Yusei Magic', sans-serif;
+}
+
+.blog-title {
+    font-family: 'Hammersmith One', sans-serif;;
+}
+
+.small-title {
+    font-family: 'Baloo Chettan 2', cursive;
+}
+
+
+.text-footer {
+    color:aliceblue;
+}
+
+.text-footer:hover {
+    color:aliceblue;
+}
