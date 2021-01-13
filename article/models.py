@@ -1,3 +1,31 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
+# Anlatılacaklar
+# ForeignKey / on_delete / related_name / choices / slug
+
+# Taslak - Yayınla
+STATUS = (
+    (0, "Draft"),
+    (1, "Publish"),
+)
+
+
+class Article(models.Model):
+    title = models.CharField(max_length=200,verbose_name="Makale Başlık")
+    content = models.TextField(verbose_name="İçerik")
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="article_post",verbose_name="Yazar")
+    status = models.IntegerField(choices=STATUS, default=0,verbose_name="Durum")
+    slug = models.SlugField(unique=True)
+
+    def __str__(self):
+        return self.title
+
+    # Part2
+    class Meta:
+        verbose_name = "Makale"
+        verbose_name_plural = "Makaleler"
+        ordering = ['-created_date']
