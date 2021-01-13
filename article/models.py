@@ -12,6 +12,12 @@ STATUS = (
 )
 
 
+# ImageFonksiyon
+def upload_article_image(instance, filename):
+    filebase, extension = filename.split('.')
+    return '{}/{}.{}'.format('articles', instance.title, extension)
+
+
 class Article(models.Model):
     title = models.CharField(max_length=200, verbose_name="Makale Başlık")
     content = models.TextField(verbose_name="İçerik")
@@ -19,6 +25,7 @@ class Article(models.Model):
     updated_date = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="article_post", verbose_name="Yazar")
     status = models.IntegerField(choices=STATUS, default=0, verbose_name="Durum")
+    image = models.ImageField(upload_to=upload_article_image, verbose_name='Kapak Resmi')
     slug = models.SlugField(unique=True)
 
     def __str__(self):
