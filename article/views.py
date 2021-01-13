@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Article
+from .models import Article, Category
 
 
 # Create your views here.
@@ -38,3 +38,26 @@ def article_detail(request, slug):
     }
 
     return render(request, 'blog-post.html', context)
+
+
+# Category List View
+def category_list(request):
+    categories = Category.objects.all()
+    context = {
+        'categories': categories
+    }
+
+    return render(request, 'category_list.html', context)
+
+
+# Category Detail View
+def category_detail(request, slug):
+    category = Category.objects.get(slug=slug)
+    category_articles = Article.objects.filter(category=category)
+
+    context = {
+        'category': category,
+        'category_articles': category_articles,
+    }
+
+    return render(request, 'category_detail.html', context)

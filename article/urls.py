@@ -10,4 +10,7 @@ urlpatterns = [
     path('<slug:slug>/', views.article_detail, name="article_detail"),
     path('articles/', views.article_list, name="article_list"),
 
+    path('categories/list/', views.category_list, name="category_list"),
+    path('category/<slug:slug>/', views.category_detail, name="category_detail"),
+
 ]

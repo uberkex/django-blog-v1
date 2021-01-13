@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kategoriler</title>
+</head>
+<body>
+
+<h1>Kategoriler</h1>
+<ul>
+    {% for category in categories %}
+        <li>{{ category.title }} // {{ category.slug }}</li>
+    {% endfor %}
+</ul>
+
+
+
+
+
+</body>
+</html>
