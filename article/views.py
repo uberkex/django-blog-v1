@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from .models import Article
 
 
 # Create your views here.
@@ -17,9 +18,23 @@ def article_list(request):
 # Article Home View
 def article_home(request):
     baslik = "Django Makaleleri"
+    articles = Article.objects.filter(status=1)
 
     context = {
         'title': baslik,
+        'articles': articles,
     }
 
     return render(request, 'index.html', context)
+
+
+# Article Detail View
+def article_detail(request, slug):
+    article = Article.objects.get(slug=slug)
+    # article = get_object_or_404(Article, slug=slug)
+
+    context = {
+        'article': article,
+    }
+
+    return render(request, 'blog-post.html', context)

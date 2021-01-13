@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static humanize %}
 
 {% block content %}
 
@@ -31,23 +31,26 @@
                     <!-- <small>Secondary Text</small> -->
                 </h2>
 
-                <!-- Blog Post -->
-                <div class="card mb-4">
-                    <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title blog-title">Post Title</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis
-                            aliquid
-                            atque,
-                            nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate
-                            voluptatibus
-                            possimus, veniam magni quis!</p>
-                        <a href="#" class="btn btn-success small-title">Read More</a>
+
+                {% for article in articles %}
+                    <!-- Blog Post -->
+                    <div class="card mb-4">
+                        <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="card-title blog-title">{{ article.title }}</h4>
+                            <p class="card-text">{{ article.content|truncatewords:48 }}</p>
+                            <a href="{% url 'article:article_detail' article.slug %}" class="btn btn-success small-title">Read More</a>
+                        </div>
+                        <div class="card-footer text-muted ">
+                            <p class="text-muted small-title">{{ article.created_date|naturaltime }} - by <a href="#">@{{ article.author }}</a>
+                            </p>
+                        </div>
                     </div>
-                    <div class="card-footer text-muted ">
-                        <p class="text-muted small-title">Posted on January 1, 2020 - by <a href="#">@codepad</a></p>
-                    </div>
-                </div>
+                {% endfor %}
+
+
+
+
 
 
                 <!-- Pagination -->
