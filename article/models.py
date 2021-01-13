@@ -13,12 +13,12 @@ STATUS = (
 
 
 class Article(models.Model):
-    title = models.CharField(max_length=200,verbose_name="Makale Başlık")
+    title = models.CharField(max_length=200, verbose_name="Makale Başlık")
     content = models.TextField(verbose_name="İçerik")
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="article_post",verbose_name="Yazar")
-    status = models.IntegerField(choices=STATUS, default=0,verbose_name="Durum")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="article_post", verbose_name="Yazar")
+    status = models.IntegerField(choices=STATUS, default=0, verbose_name="Durum")
     slug = models.SlugField(unique=True)
 
     def __str__(self):
